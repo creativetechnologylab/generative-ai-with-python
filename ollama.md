@@ -28,3 +28,35 @@ Be aware that these models are typically at least a couple GBs in size, meaning 
 
 ## Ollama and Python
 
+There are two ways you can talk with Ollama using Python. Start by creating a conda environment and naming it ollama. Open either the terminal or the Miniforge prompt. Create an environment with the command `conda create --name ollama python=3.10` and then activate the environment with the command `conda activate ollama`.
+
+### `ollama-python`
+
+Ollama has its own [ollama-python](https://github.com/ollama/ollama-python) library. This can be installed with pip.
+
+![](images/ollama/pip-install-ollama.gif)
+
+When the installation finishes, create an `ollama-test.py` file and open it in your text editor/IDE of choice. Now try running the following code:
+
+```python
+import ollama
+
+response = ollama.chat(
+    model="dolphin-phi",
+    messages=[
+        {
+            "role": "user",
+            "content": "Cats or dogs?",
+        },
+    ],
+)
+print(response["message"]["content"])
+```
+
+Now run the file. This wil generate a response similar to the one below:
+
+![](images/ollama/ollama-python-cats-dogs.gif)
+
+As before, we are still using the dolphin-phi model as it's what's already been installed on the system.
+
+### `requests`
