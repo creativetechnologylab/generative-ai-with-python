@@ -66,4 +66,6 @@ When you run it now, you may get something that sounds a lot more sensible:
 
 ![](images/gpt4all/session-cats-or-dogs.gif)
 
+We can also use a **system prompt** to create a character for our conversation.
+
 ## Managing Hallucination
