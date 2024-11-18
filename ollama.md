@@ -20,4 +20,11 @@ To start with, we can download the `dolphin-phi` model by using the following co
 
 ![Slow internet...](images/ollama/download-dolphin.gif)
 
-Be aware that these models are typically at least a couple GBs in size, meaning that if you download several of them, they will gradually eat up space on your hard drive.
+After a while, the download will complete, and it becomes possible to chat with the dolphin-phi model:
+
+![Slow internet...](images/ollama/dolphin-phi-chat.gif)
+
+Be aware that these models are typically at least a couple GBs in size, meaning that if you download several of them, they will gradually eat up space on your hard drive. Be sure to remove the models you no longer wish to use. This can be done by entering the command `ollama rm model-to-remove`.
+
+## Ollama and Python
+
