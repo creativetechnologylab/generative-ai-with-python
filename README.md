@@ -4,9 +4,9 @@
 
 ## Text Generation
 
-### [Ollama](ollama.md)
-### GPT4All
-### text-generation-webui
+[Ollama](ollama.md)
+[GPT4All](gpt4all.md)
+[text-generation-webui](text-generation-webui.md)
 
 ## Image Generation
 
