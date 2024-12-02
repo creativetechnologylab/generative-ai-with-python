@@ -114,5 +114,51 @@ As we can see, there's been a bit of hallucination. This is likely because the s
 
 ## Vision Language Models
 
-Ollama is also capable of using Vision Language Models (VLMs) to analyse pictures.
+Ollama is also capable of using Vision Language Models (VLMs) to analyse pictures. There is a list of vision models here: https://ollama.com/search?c=vision
 
+Moondream is a very small model that can work even on less powerful devices, so let's install that with the command `ollama pull moondream`
+
+![](images/ollama/ollama-pull-moondream.gif)
+
+Now we can list the models again with `ollama list` and see that moondream is on the system.
+
+![](images/ollama/ollama-list-moondream.png)
+
+Now let's take this clown picture and have moondream describe it:
+
+![](code-examples/ollama/clown.jpg)
+
+### `ollama`
+
+Using the code below we can analyse the clown image with the moondream model.
+
+```python
+import ollama
+import base64
+
+# convert the image to base64
+with open("clown.jpg", "rb") as image_file:
+    data = base64.b64encode(image_file.read()).decode("utf-8")
+
+response = ollama.chat(
+    model="moondream",
+    messages=[
+        {
+            "role": "user",
+            "content": "What's in this image?",
+            "images": [data], # pass the image in the images field
+        },
+    ],
+)
+print(response["message"]["content"])
+```
+
+This should give you output along the lines of this:
+
+```
+The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up in front of him. The man's vibrant attire and playful expression make it clear that he is a clown or entertainer.
+```
+
+### `requests`
+
+Now we can do something similar with the requests library.
