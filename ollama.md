@@ -34,6 +34,8 @@ I can also see that a model has now been downloaded by running `ollama list` aga
 
 Be aware that these models are typically at least a couple GBs in size, meaning that if you download several of them, they will gradually eat up space on your hard drive. Be sure to remove the models you no longer wish to use. This can be done by entering the command `ollama rm model-to-remove`.
 
+To see a list of available Ollama models, look here: https://ollama.com/search
+
 ## Ollama and Python
 
 There are two ways you can talk with Ollama using Python. Start by creating a conda environment and naming it ollama. Open either the terminal or the Miniforge prompt. Create an environment with the command `conda create --name ollama python=3.10` and then activate the environment with the command `conda activate ollama`.
@@ -42,7 +44,7 @@ There are two ways you can talk with Ollama using Python. Start by creating a co
 
 Ollama has its own [ollama-python](https://github.com/ollama/ollama-python) library. This can be installed with pip.
 
-![](images/ollama/pip-install-ollama.gif)
+![pip install ollama](images/ollama/pip-install-ollama.gif)
 
 When the installation finishes, create an `ollama-test.py` file and open it in your text editor/IDE of choice. Now try running the following code:
 
@@ -67,4 +69,50 @@ Now run the file. This wil generate a response similar to the one below:
 
 As before, we are still using the dolphin-phi model as it's what's already been installed on the system.
 
+Information on the Python ollama library can be found here: https://github.com/ollama/ollama-python
+
 ### `requests`
+
+The `requests` library is also capable of communicating with Ollama models. 
+
+First we can check using our terminal/Command Prompt to see if the Ollama server is running. This can be done with the command `curl http://localhost:11434`
+
+![](images/ollama/ollama-server.png)
+
+This means we can send API requests to the Ollama server, and use this method of interacting with a model.
+
+To start with, we need to install the requests library. This can be done with `pip install requests`. Make sure that your ollama environment has been activated before installing.
+
+![](images/ollama/pip-install-requests.gif)
+
+The following code can then also ask the dolphin-phi model if it prefers cats or dogs.
+
+```python
+import requests
+
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+data = {
+    "model": "dolphin-phi",
+    "prompt": "Cats or dogs?",
+    "stream": False,
+}
+response = requests.post(OLLAMA_API_URL, json=data)
+
+if response.status_code == 200:
+    result = response.json()
+    print(result["response"])
+else:
+    print(f"Failed to get a response: {response.status_code}")
+```
+
+This may give you a result like the following:
+
+![](images/ollama/requests-cats-dogs.gif)
+
+As we can see, there's been a bit of hallucination. This is likely because the system prompt informs the language model that its name is dolphin-phi.
+
+## Vision Language Models
+
+Ollama is also capable of using Vision Language Models (VLMs) to analyse pictures.
+
