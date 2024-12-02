@@ -6,7 +6,11 @@ Introduction goes here...
 
 ## Installation
 
-TODO.
+Ollama can be downloaded [here](https://ollama.com/download). Please follow the instructions for your system.
+
+When installation is complete, you should be able to enter "ollama" in your Terminal/Command Prompt and see the following:
+
+![](images/ollama/ollama-installed.gif)
 
 ## Running Ollama in the Terminal
 
