@@ -14,19 +14,23 @@ When installation is complete, you should be able to enter "ollama" in your Term
 
 ## Running Ollama in the Terminal
 
-With Ollama installed, you should be able to use the `ollama` command in the terminal/command line. This should generate the following output:
+Ollama is now on our system but at the present we can't use it to generate text as there are no models installed. Ollama requires at least one model to do text generation.
 
-![alt text](images/ollama/ollama-terminal.png)
+We can use the `ollama list` command to see what models are on the system:
 
-This lets us know that Ollama is now on the system but at the present we can't use it to generate text as there are no models installed. Ollama requires at least one model to do text generation. There is a list of compatible models here: https://ollama.com/library
+![There are no models at the moment](images/ollama/ollama-list-nothing.gif)
 
-To start with, we can download the `dolphin-phi` model by using the following command: `ollama run dolphin-phi`
+To start with, we can download the `dolphin-phi` model by using the following command: `ollama pull dolphin-phi`
 
-![Slow internet...](images/ollama/download-dolphin.gif)
+![Downloading a model](images/ollama/ollama-pull-dolphinphi.gif)
 
-After a while, the download will complete, and it becomes possible to chat with the dolphin-phi model:
+After a while, the download will complete, and it becomes possible to chat with the dolphin-phi model. We can do this with the command `ollama run dolphin-phi`.
 
-![Slow internet...](images/ollama/dolphin-phi-chat.gif)
+![Running a model](images/ollama/ollama-run-dolphinphi.gif)
+
+I can also see that a model has now been downloaded by running `ollama list` again:
+
+![Running a model](images/ollama/ollama-list-installed.png)
 
 Be aware that these models are typically at least a couple GBs in size, meaning that if you download several of them, they will gradually eat up space on your hard drive. Be sure to remove the models you no longer wish to use. This can be done by entering the command `ollama rm model-to-remove`.
 
