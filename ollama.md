@@ -10,7 +10,7 @@ Ollama can be downloaded [here](https://ollama.com/download). Please follow the 
 
 When installation is complete, you should be able to enter "ollama" in your Terminal/Command Prompt and see the following:
 
-![](images/ollama/ollama-installed.gif)
+![](images/ollama/ollama-terminal.png)
 
 ## Running Ollama in the Terminal
 
@@ -18,17 +18,17 @@ Ollama is now on our system but at the present we can't use it to generate text 
 
 We can use the `ollama list` command to see what models are on the system:
 
-![There are no models at the moment](images/ollama/ollama-list-nothing.gif)
+![There are no models at the moment](images/ollama/ollama-list-nothing.png)
 
 To start with, we can download the `dolphin-phi` model by using the following command: `ollama pull dolphin-phi`
 
 ![Downloading a model](images/ollama/ollama-pull-dolphinphi.gif)
 
-After a while, the download will complete, and it becomes possible to chat with the dolphin-phi model. We can do this with the command `ollama run dolphin-phi`.
+After a while, the download will complete, and it becomes possible to chat with the dolphin-phi model. We can do this with the command `ollama run dolphin-phi`. Now I can ask the model some basic questions.
 
 ![Running a model](images/ollama/ollama-run-dolphinphi.gif)
 
-I can also see that a model has now been downloaded by running `ollama list` again:
+Using the `/exit` command I can leave the conversation. I can then that a model has now been downloaded by running `ollama list` again:
 
 ![Running a model](images/ollama/ollama-list-installed.png)
 
@@ -38,7 +38,7 @@ To see a list of available Ollama models, look here: https://ollama.com/search
 
 ## Ollama and Python
 
-There are two ways you can talk with Ollama using Python. Start by creating a conda environment and naming it ollama. Open either the terminal or the Miniforge prompt. Create an environment with the command `conda create --name ollama python=3.10` and then activate the environment with the command `conda activate ollama`.
+There are two ways you can talk with Ollama using Python. Start by creating a conda environment and naming it ollama. Open either the terminal or the Miniforge prompt. Create an environment with the command `conda create --name gen-ai python=3.10` and then activate the environment with the command `conda activate gen-ai`.
 
 ### `ollama-python`
 
