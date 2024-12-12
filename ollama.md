@@ -63,25 +63,27 @@ response = ollama.chat(
 print(response["message"]["content"])
 ```
 
+In the above example, we are calling the `chat` function. This needs two arguments. First, it needs to know which model we wish to chat with, and then it needs to know what we want to say to the model. This then returns our `response` value, that we will print to see what the model said back to us.
+
 Now run the file. This wil generate a response similar to the one below:
 
 ![](images/ollama/ollama-python-cats-dogs.gif)
 
 As before, we are still using the dolphin-phi model as it's what's already been installed on the system.
 
-Information on the Python ollama library can be found here: https://github.com/ollama/ollama-python
+More information on the Python ollama library can be found here: https://github.com/ollama/ollama-python
 
 ### `requests`
 
 The `requests` library is also capable of communicating with Ollama models. 
 
-First we can check using our terminal/Command Prompt to see if the Ollama server is running. This can be done with the command `curl http://localhost:11434`
+First we can check using our terminal/command prompt to see if the Ollama server is running. This can be done with the command `curl http://localhost:11434`
 
 ![](images/ollama/ollama-server.png)
 
-This means we can send API requests to the Ollama server, and use this method of interacting with a model.
+This means we can send API requests to the Ollama server, and use this method of interacting with a model. By default, when Ollama is installed on your system, it should begin running the server at startup.
 
-To start with, we need to install the requests library. This can be done with `pip install requests`. Make sure that your ollama environment has been activated before installing.
+Now we need to install the requests library. This can be done with `pip install requests`. Make sure that your `gen-ai` environment has been activated before installing so that the library is installed to that environment only, rather than the `base` environment.
 
 ![](images/ollama/pip-install-requests.gif)
 
@@ -106,17 +108,19 @@ else:
     print(f"Failed to get a response: {response.status_code}")
 ```
 
-This may give you a result like the following:
+Like before, we need to send along our `model` and our `prompt`. However, when using requests, we also need to pass along a `stream` value in the form of a bool. This determined if we get our response word-by-word or in one complete chunk. Depending on what you are trying to achieve, you may want to set stream mode to `True` as this can cause things to appear more fluid. However, a bit more coding is required to get this working. For the time being, I will keep it as `False`.
+
+Running the code may give you a result like the following:
 
 ![](images/ollama/requests-cats-dogs.gif)
 
-As we can see, there's been a bit of hallucination. This is likely because the system prompt informs the language model that its name is dolphin-phi.
+As we can see, there's been a bit of hallucination. This is likely because the system prompt informs the language model that its name is dolphin-phi. So that, plus my question about animals, made it act a bit weirdly. This is often a tricky part of working with such models. If you wish to use LLMs in your project, be sure to put aside enough time to pick up on the "quirks" of the different language models, and potentially experiment with different language models to see which ones give you the best replies within a reasonable amount of time for your hardware. If you can identify a pattern/cause behind the hallucinations, then you are better able to take steps to manage them.
 
 ## Vision Language Models
 
 Ollama is also capable of using Vision Language Models (VLMs) to analyse pictures. There is a list of vision models here: https://ollama.com/search?c=vision
 
-Moondream is a very small model that can work even on less powerful devices, so let's install that with the command `ollama pull moondream`
+Moondream is a very small model that can work even on less powerful devices and devices with less space, so let's install that with the command `ollama pull moondream`
 
 ![](images/ollama/ollama-pull-moondream.gif)
 
@@ -130,13 +134,43 @@ Now let's take this clown picture and have moondream describe it:
 
 ### `ollama`
 
-Using the code below we can analyse the clown image with the moondream model.
+Before being able to analyse an image with a VLM, we need to first convert the image into the `base64` format. An example of this is shown below:
 
 ```python
 import ollama
 import base64
 
-# convert the image to base64
+# load an image as base64
+with open("clown.jpg", "rb") as image_file:
+    data = base64.b64encode(image_file.read()).decode("utf-8")
+```
+
+The `base64` library does not need to be installed with pip, as it is already part of the Python Standard Library.
+
+Now that the image is in `base64`, it is in a format that our VLM will be able to understand. The Ollama documentation says that images should be passed in a list, with the `images` key-value pair.
+
+```python
+response = ollama.chat(
+    model="moondream",
+    messages=[
+        {
+            "role": "user",
+            "content": "What's in this image?",
+            "images": [data], # pass the image in the images field
+        },
+    ],
+)
+```
+
+As we are passing just the one image, our list only has one element within it, but more images could be added if we wanted to.
+
+Now we can put this all together...
+
+```python
+import ollama
+import base64
+
+# load the image as base64
 with open("clown.jpg", "rb") as image_file:
     data = base64.b64encode(image_file.read()).decode("utf-8")
 
@@ -155,10 +189,11 @@ print(response["message"]["content"])
 
 This should give you output along the lines of this:
 
-```
-The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up in front of him. The man's vibrant attire and playful expression make it clear that he is a clown or entertainer.
-```
+
+> The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up in front of him. The man's vibrant attire and playful expression make it clear that he is a clown or entertainer.
+
 
 ### `requests`
 
 Now we can do something similar with the requests library.
+
