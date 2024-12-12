@@ -75,7 +75,7 @@ More information on the Python ollama library can be found here: https://github.
 
 ### `requests`
 
-The `requests` library is also capable of communicating with Ollama models. 
+The `requests` library is also capable of communicating with Ollama models. This one requires a bit more work to get set up, and it's generally easier to use the Ollama library, but if you are using a device like the Nvidia Jetsons then you may have to use the `requests` approach.
 
 First we can check using our terminal/command prompt to see if the Ollama server is running. This can be done with the command `curl http://localhost:11434`
 
@@ -87,7 +87,40 @@ Now we need to install the requests library. This can be done with `pip install 
 
 ![](images/ollama/pip-install-requests.gif)
 
-The following code can then also ask the dolphin-phi model if it prefers cats or dogs.
+To start with, we need to import the requests library, and provide a URL for the Ollama API. This lets the requests library know where to direct the
+
+```python
+import requests
+
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+```
+
+Now we need to assemble the "meat" of our request in the form of a `data` object that stores information about the model we wish to use, the prompt, and whether or not we want our response to be in `stream` mode. This is then sent off to Ollama with the `requests.post` method.
+
+```python
+data = {
+    "model": "dolphin-phi",
+    "prompt": "Cats or dogs?",
+    "stream": False,
+}
+response = requests.post(OLLAMA_API_URL, json=data)
+```
+
+The `stream` value can be True or False. It determines if we get our response word-by-word or in one complete chunk. Depending on what you are trying to achieve, you may want to set stream mode to `True` as this can cause things to appear more fluid. However, a bit more coding is required to "handle" the output of steams (like repeatedly updating an interface with every new word that is returned). For the time being, I will keep it as `False`.
+
+Calling `requests.post` then gives us a `response` value, that lets us know if our attempt at communicating with Ollama was successful or not. There can be connection issues that can cause Ollama to fail to generate a reply. To check this, we need to examine the `status_code` attribute of our `response`.
+
+```python
+if response.status_code == 200:
+    result = response.json()
+    print(result["response"])
+else:
+    print(f"Failed to get a response: {response.status_code}")
+```
+
+A `status_code` of 200 let's us know that our communication with Ollama was a success, whereas any other value tells us something went wrong. This is why we use `if-else` to determine what it is we're going to do next. In most cases, you should be fine so long as Ollama is running.
+
+Now we can put it all together to get the following:
 
 ```python
 import requests
@@ -108,13 +141,11 @@ else:
     print(f"Failed to get a response: {response.status_code}")
 ```
 
-Like before, we need to send along our `model` and our `prompt`. However, when using requests, we also need to pass along a `stream` value in the form of a bool. This determined if we get our response word-by-word or in one complete chunk. Depending on what you are trying to achieve, you may want to set stream mode to `True` as this can cause things to appear more fluid. However, a bit more coding is required to get this working. For the time being, I will keep it as `False`.
-
 Running the code may give you a result like the following:
 
 ![](images/ollama/requests-cats-dogs.gif)
 
-As we can see, there's been a bit of hallucination. This is likely because the system prompt informs the language model that its name is dolphin-phi. So that, plus my question about animals, made it act a bit weirdly. This is often a tricky part of working with such models. If you wish to use LLMs in your project, be sure to put aside enough time to pick up on the "quirks" of the different language models, and potentially experiment with different language models to see which ones give you the best replies within a reasonable amount of time for your hardware. If you can identify a pattern/cause behind the hallucinations, then you are better able to take steps to manage them.
+As we can see, there's been a bit of hallucination. It makes a comparison to dolphins even though we never asked for this. This is likely because the system prompt (the very first prompt the language model receives, that gives it a kind of "identity") informs the language model that its name is dolphin-phi. So that, plus my question about animals, made it act a bit funny. This is often a tricky part of working with such models. If you wish to use LLMs in your project, be sure to put aside enough time to pick up on the "quirks" of the different language models, and potentially experiment with different language models to see which ones give you the best replies within a reasonable amount of time for your hardware. If you can identify a kind of pattern/cause behind (some) hallucinations, then you are better able to take steps to manage them.
 
 ## Vision Language Models
 
@@ -195,19 +226,62 @@ This should give you output along the lines of this:
 
 ### `requests`
 
-Now we can do something similar with the requests library. Again, we need to convert our image to base64.
+Now we can do something similar with the requests library. Again, we need to convert our image to base64. We also need to provide the url for our Ollama API.
 
 ```python
-import ollama
+import requests
 import base64
 
-# load the image as base64
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
 with open("clown.jpg", "rb") as image_file:
-    data = base64.b64encode(image_file.read()).decode("utf-8")
+    image = base64.b64encode(image_file.read()).decode("utf-8")
 ```
 
-And now we can send this image to the Moondream model using the `requests.post` method.
+Now we can prepare a `data` variable that will store the model to use, the prompt, the image, and whether or not our response should be streamed. This can then be sent to Ollama with the `requests.post` method.
 
 ```python
+data = {
+    "model": "moondream",
+    "prompt": "What's in this image?",
+    "images": [image],
+    "stream": False,
+}
+response = requests.post(OLLAMA_API_URL, json=data)
+```
 
+Now, we can take a look at the response, and print our reply.
+
+```python
+if response.status_code == 200:
+    result = response.json()
+    print(result["response"])
+else:
+    print(f"Failed to get a response: {response.status_code}")
+```
+
+Putting this all together gives the following:
+
+```python
+import requests
+import base64
+
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+with open("clown.jpg", "rb") as image_file:
+    image = base64.b64encode(image_file.read()).decode("utf-8")
+
+data = {
+    "model": "moondream",
+    "prompt": "What's in this image?",
+    "images": [image],
+    "stream": False,
+}
+response = requests.post(OLLAMA_API_URL, json=data)
+
+if response.status_code == 200:
+    result = response.json()
+    print(result["response"])
+else:
+    print(f"Failed to get a response: {response.status_code}")
 ```
