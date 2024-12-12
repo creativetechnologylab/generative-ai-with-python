@@ -147,7 +147,9 @@ Running the code may give you a result like the following:
 
 ![](images/ollama/requests-cats-dogs.gif)
 
-As we can see, there's been a bit of hallucination. It makes a comparison to dolphins even though we never asked for this. This is likely because the system prompt (the very first prompt the language model receives, that gives it a kind of "identity") informs the language model that its name is dolphin-phi. So that, plus my question about animals, made it act a bit funny. This is often a tricky part of working with such models. If you wish to use LLMs in your project, be sure to put aside enough time to pick up on the "quirks" of the different language models, and potentially experiment with different language models to see which ones give you the best replies within a reasonable amount of time for your hardware. If you can identify a kind of pattern/cause behind (some) hallucinations, then you are better able to take steps to manage them.
+In the above example, the model refuses to give an opinion. This is why some prompt-nudging may be necessary to give it the kinds of replies you want.
+
+If you wish to use LLMs in your project, be sure to put aside enough time to pick up on the "quirks" of the different language models, and potentially experiment with different language models to see which ones give you the best replies within a reasonable amount of time for your hardware. Also be aware of the issue of hallunications. If you can identify a kind of pattern/cause behind (some) hallucinations, then you are better able to take steps to manage them.
 
 ## Vision Language Models
 
@@ -222,9 +224,7 @@ print(response["message"]["content"])
 
 This should give you output along the lines of this:
 
-
 > The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up in front of him. The man's vibrant attire and playful expression make it clear that he is a clown or entertainer.
-
 
 ### `requests`
 
