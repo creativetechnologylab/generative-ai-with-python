@@ -285,3 +285,7 @@ if response.status_code == 200:
 else:
     print(f"Failed to get a response: {response.status_code}")
 ```
+
+This gives me the following output:
+
+>The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up to his mouth, creating an amusing scene. The background of the image is plain white, which makes the colorful outfit and the man's expression stand out even more.
