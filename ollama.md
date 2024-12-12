@@ -95,6 +95,8 @@ import requests
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 ```
 
+Giving a variable name in all-caps is a convention commonly used for *constants*: variables that will have one fixed value throughout the execution of our program. The code would work just the same even if the name was lower-case, but using all-caps serves as a clear signal that this value is not intended to change.
+
 Now we need to assemble the "meat" of our request in the form of a `data` object that stores information about the model we wish to use, the prompt, and whether or not we want our response to be in `stream` mode. This is then sent off to Ollama with the `requests.post` method.
 
 ```python
