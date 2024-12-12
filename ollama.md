@@ -195,5 +195,19 @@ This should give you output along the lines of this:
 
 ### `requests`
 
-Now we can do something similar with the requests library.
+Now we can do something similar with the requests library. Again, we need to convert our image to base64.
 
+```python
+import ollama
+import base64
+
+# load the image as base64
+with open("clown.jpg", "rb") as image_file:
+    data = base64.b64encode(image_file.read()).decode("utf-8")
+```
+
+And now we can send this image to the Moondream model using the `requests.post` method.
+
+```python
+
+```
