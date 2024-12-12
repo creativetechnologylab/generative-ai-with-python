@@ -6,7 +6,7 @@ GPT4All is capable of running LLMs locally, even on computers without GPUs.
 
 ## Installation
 
-The GPT4All library can be installed with pip. First, let's create a Conda environment for using the library. We can do this with the command `conda create --name gpt4all python=3.10`. When the environment has been completed then it can be activated with the command `conda activate gpt4all`.
+The GPT4All library can be installed with pip. First, let's create a Conda environment for using the library. We can do this with the command `conda create --name gen-ai python=3.10`. When the environment has been completed then it can be activated with the command `conda activate gen-ai`.
 
 Now we can install the GPT4All library to this environment with the command `pip install gpt4all`.
 
