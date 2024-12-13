@@ -60,8 +60,8 @@ Now we can return to the Chat tab, and try to discuss something with the model. 
 
 The reply is a bit weird, but it is working.
 
-## Fine-Tuning a Model
-
 ## Creating Characters
+
+## Fine-Tuning a Model
 
 ## API
