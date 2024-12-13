@@ -14,9 +14,11 @@ Now we can install the GPT4All library to this environment with the command `pip
 
 ## Generating Responses
 
+In GPT4All, it is possible to interact with models with our without a session.
+
 ### Without a Session
 
-In GPT4All we can interact with models with or without a _session_. A session is capable of storing conversation history, so if we simply ask it to generate replies, it will have no memory of anything we asked it before.
+In GPT4All we can interact with models with or without a _session_. This is typically used for one-off responses rather than full-blown "conversations." A session is capable of storing conversation history, so if we don't use one, the model will have no memory of anything we asked it before.
 
 Now create a folder for some code to test out the GPT4All and open it in the terminal or navigate to it with the Miniforge prompt. Create a Python file, and name it `hello-test.py`.
 
@@ -162,3 +164,5 @@ Running this gives me the output below:
 By using a system prompt, it can be possible to give the language model a bit of a "personality."
 
 ## Managing Hallucination
+
+WIP.
