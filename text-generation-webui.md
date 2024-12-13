@@ -52,6 +52,14 @@ However, we still haven't actually _loaded_ the model yet. To do this, we have t
 
 At the moment, we have no Models listed. While the download was a success, we still need to tell text-generation-webui to _refresh_ its list of available models. To do this, press the button with the "repeat" emoji to the right of the drop-down menu. Once that's been done, you should be able to select the newly downloaded model. Now hit load, and text-generation-webui will allow us to use it.
 
+![](images/text-generation-webui/loaded-model.png)
+
+Now we can return to the Chat tab, and try to discuss something with the model. This time, we get a reply.
+
+![](images/text-generation-webui/chat-with-model.png)
+
+The reply is a bit weird, but it is working.
+
 ## Fine-Tuning a Model
 
 ## Creating Characters
