@@ -32,7 +32,25 @@ The terminal also lets us know that we currently have no Model loaded:
 
 On the top panel, click on the Model tab. 
 
+![](images/text-generation-webui/model-window-no-model.png)
 
+This allows us to download and load models. The helpful thing about text-generation-webui is that we can simply provide a link from [HuggingFace](huggingface.co) and it will download a text generation model for us.
+
+Many have found that [TheBloke's](https://huggingface.co/TheBloke) models work seamlessly within text-generation-webui.
+
+One very lightweight model we can test is [TinyLLama 1.1B](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v0.3-GPTQ). Copy the link to the model on HuggingFace, and then paste it into the text box in the area that says "Download Model or LoRA."
+
+![](images/text-generation-webui/paste-link-download.png)
+
+Now hit the orange Download button, and text-generation-webui should begin downloading this model. The terminal will show information about the download progress. As this is a smaller model, it should only take a couple of minutes. When it's done, you should see a download complete message:
+
+![](images/text-generation-webui/download-complete.png)
+
+However, we still haven't actually _loaded_ the model yet. To do this, we have to go to the Model drop down menu. 
+
+![](images/text-generation-webui/model-drop-down-no-refresh.png)
+
+At the moment, we have no Models listed. While the download was a success, we still need to tell text-generation-webui to _refresh_ its list of available models. To do this, press the button with the "repeat" emoji to the right of the drop-down menu. Once that's been done, you should be able to select the newly downloaded model. Now hit load, and text-generation-webui will allow us to use it.
 
 ## Fine-Tuning a Model
 
