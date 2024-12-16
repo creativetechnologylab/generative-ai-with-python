@@ -76,6 +76,16 @@ WIP.
 
 text-generation-webui makes it possible to fine-tune a model. We can go for style-transfer (causing the model to mimic the writing style of a given text) or knowledge absorption. Style-transfer training is less demanding.
 
+First head over to the Training tab:
 
+![](images/text-generation-webui/training-tab.png)
+
+We are able to fine-tune a model with formatted data or a raw text file. Preparing formatted data is a bit more complex, so for now we'll just focus on using raw text files.
+
+On the right hand side, click on the "Raw text file" tab.
+
+![](images/text-generation-webui/raw-text-file.png)
+
+We need to tell text-generation-webui which file it will use for its training. At the moment clicking in the drop-down menu doesn't give us an option to load a file. This is because we need to put something in the "training" folder.
 
 ## API
