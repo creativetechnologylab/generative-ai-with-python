@@ -62,6 +62,20 @@ The reply is a bit weird, but it is working.
 
 ## Creating Characters
 
+A simple way to flavour responses is to create a character. We can do this by going to the Parameters tab.
+
+![](images/text-generation-webui/parameters-tab.png)
+
+Here we can see the default context for our model. It is simply a standard AI assistant.
+
+Now let's change it into something else...
+
+WIP.
+
 ## Fine-Tuning a Model
+
+text-generation-webui makes it possible to fine-tune a model. We can go for style-transfer (causing the model to mimic the writing style of a given text) or knowledge absorption. Style-transfer training is less demanding.
+
+
 
 ## API
