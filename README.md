@@ -10,11 +10,19 @@
 
 ## Image Generation
 
-### Stable Diffusion
-### DALL-E Mini
+[AUTOMATIC1111 Stable Diffusion Web UI](automatic1111.md)
+[Small Stable Diffusion](stable-diffusion-mini.md)
+[Dall-E Mini](dall-e-mini.md)
+
+## Mac MLX
+
+[Stable Diffusion](mac-stable-diffusion.md)
+[Text Generation](mac-text-generation.md)
 
 ## Other Tools?
 
+[Whisper](whisper.md)
+
 ## Pipelines
 
-## Further Reading? (Or Watching...)
+## Further Info
