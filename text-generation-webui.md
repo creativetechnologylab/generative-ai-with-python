@@ -88,4 +88,8 @@ On the right hand side, click on the "Raw text file" tab.
 
 We need to tell text-generation-webui which file it will use for its training. At the moment clicking in the drop-down menu doesn't give us an option to load a file. This is because we need to put something in the "training" folder.
 
+![](images/text-generation-webui/no-training-data.png)
+
 ## API
+
+WIP.
