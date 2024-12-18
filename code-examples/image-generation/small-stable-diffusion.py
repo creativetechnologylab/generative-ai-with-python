@@ -16,3 +16,4 @@ pipe = pipe.to("cuda")
 
 img = pipe(args.prompt + " 4K").images[0]
 img.save("output.png")
+print("saved image...")

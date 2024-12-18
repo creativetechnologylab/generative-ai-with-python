@@ -49,4 +49,6 @@ img = pipe(args.prompt + " 4K").images[0]
 img.save("output.png")
 ```
 
-This will generate an image in 50 steps. This will take around a minute or less depending on your hardware.
+This will generate an image in 50 steps. This will take around a minute or less depending on your hardware. Here's an example of an apple picture created by this code:
+
+![](code-examples/image-generation/output.png)
