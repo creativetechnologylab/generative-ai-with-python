@@ -11,7 +11,7 @@
 ## Image Generation
 
 [AUTOMATIC1111 Stable Diffusion Web UI](automatic1111.md)  
-[Small Stable Diffusion](stable-diffusion-mini.md)  
+[Small Stable Diffusion](small-stable-diffusion.md)  
 [Dall-E Mini](dall-e-mini.md)  
 
 ## Mac MLX
