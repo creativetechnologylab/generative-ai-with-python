@@ -300,3 +300,61 @@ It is not possible to run the full 671b model on a consumer laptop or PC (it's 4
 
 ![](images/ollama/pull-deepseek.gif)
 
+Now we can run the model and begin talk with it.
+
+![](images/ollama/deepseek-capital-question.gif)
+
+Deepseek shows us how it "thinks" as it answers the question. Here is the complete output I get:
+
+```
+>>>> What is the capital of France?
+<think>
+Okay, so I need to figure out what the capital of France is. Hmm, I've heard Paris
+mentioned a lot in relation to France, but I want to make sure that's correct. Let
+me think about what I know.
+
+France is a country in Western Europe, right? And Paris is one of its major
+cities. I remember seeing the Eiffel Tower and other landmarks associated with
+Paris. But wait, could there be another city that's also considered the capital or
+maybe shares some administrative functions?
+
+I think sometimes countries have more than one city acting as capitals, but in
+France's case, I don't recall that happening. Maybe I should consider if "capital"
+refers only to the political seat of government and Paris is definitely where all
+the government institutions are located.
+
+Also, historically, Paris has been the center of France's culture, politics, and
+economy for centuries. So it makes sense that it would also be the capital. Are
+there any other cities in France that might be capitals? I know Lyon is a big
+city, but I don't think it's a capital. Strasbourg comes to mind because it's near
+the border with Germany, but again, not the capital.
+
+Wait, could the capital be Marseille? No, that's more known for its port and
+historical significance, but not as the capital. Then there's Toulouse, which is
+significant in the southwest, but I don't think it's a capital either.
+
+I should also consider if there are any administrative regions or departments
+where the government might be based besides Paris. For example, maybe some
+departments have their own capitals, but that's different from the national
+capital.
+
+Thinking about recent history, like after World War II or during other historical
+events, Paris has always been central to French governance. So it's safe to say
+that Paris is the capital. I don't think there's any ambiguity here.
+
+Just to double-check, maybe I can recall if any other European countries have
+capitals besides their most famous cities. For example, London is both a major
+city and the capital of the UK. Similarly, Berlin is Germany's capital, which was
+reunified after the fall of the Berlin Wall. So Paris follows the same pattern as
+these other national capitals.
+
+Another angle: I know that in some countries, like South Africa or Brazil, there
+are multiple cities sharing the role of capital for different branches of
+government. But France doesn't do that to my knowledge. It's a unitary state, so
+it likely has one central capital.
+
+Therefore, putting all this together, Paris is definitely the capital of France.
+</think>
+
+The capital of France is Paris.
+```
