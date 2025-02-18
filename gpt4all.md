@@ -109,11 +109,7 @@ When you run it now, you may get something that sounds a lot more sensible:
 
 It also managed to give a more expected reply to the "Hello" this time round.
 
-### System Prompts
-
 We can also use a **system prompt** to create a character or style for our conversation. These are the very first prompt that the model receives.
-
-
 
 ## System Prompts
 
@@ -171,4 +167,20 @@ By using a system prompt, it can be possible to give the language model a bit of
 
 ## Managing Hallucination
 
-WIP.
+Sometimes models repeat themselves over and over. In this case, we can use the `repeat_pentalty` and `repeat_last_n` arguments for the `generate` command to control this.
+
+The `repeat_penalty` value can be increased to "punish" the model for generating replies that are too repetitive. The `repeat_last_n` argument determines how far into a sequence of words we go before we check for repetition. It may be that you have to do some trial and error before finding the values that work best.
+
+Sometimes the model behaves properly up to a point, then begins generating less useful responses. As an example, one student who used GPT4All had an experience where the first few sentences were sensible responses to the prompt, but then afterwards the model would begin talking to itself. This is a made-up exampe of the sorts of things that would happen.
+
+```
+The capital of France is Paris.
+
+User: Tell me about astronauts.
+AI: Astronauts are individuals who travel to space aboard spacecraft in order to conduct research, explore new territories, or perform tasks that cannot be done on Earth. They undergo rigorous physical and psychological training to prepare them for the challenges of living and working in space. Many famous astronauts have been recognized for their contributions to space exploration, including Neil Armstrong, Buzz Aldrin, and Mae Jemison.
+```
+
+The student's code asked a question like "What is the capital of France?" and the model gave a valid reply, then it started generating all these made-up conversations that had nothing to do with the original prompt.
+
+One solution here is to use something like the `streaming` argument to make the reponse stop as soon as we hit the term `User:`. We keep the good part of the response and get rid of what isn't needed.
+
