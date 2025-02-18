@@ -291,3 +291,12 @@ else:
 This gives me the following output:
 
 >The image features a man with a red wig and polka dot suit, wearing white gloves. He is making a funny face for the camera while holding his hands up to his mouth, creating an amusing scene. The background of the image is plain white, which makes the colorful outfit and the man's expression stand out even more.
+
+## Deepseek
+
+Ollama makes it very easy to run Deepseek. Start by going to the model's page on the Ollama website: https://ollama.com/library/deepseek-r1
+
+It is not possible to run the full 671b model on a consumer laptop or PC (it's 404GB!), but we can run a _distilled_ version at home. For this example, I will use the 14b model as it works fine with my NVIDIA GeForce RTX 4070. To get started with it, I can use the command `ollama pull deepseek-r1:14b`.
+
+![](images/ollama/pull-deepseek.gif)
+
