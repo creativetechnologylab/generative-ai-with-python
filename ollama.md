@@ -358,3 +358,49 @@ Therefore, putting all this together, Paris is definitely the capital of France.
 
 The capital of France is Paris.
 ```
+
+This is some Python code that can interact with Deepseek.
+
+```python
+import ollama
+
+response = ollama.chat(
+    model="deepseek-r1:14b",
+    messages=[
+        {
+            "role": "user",
+            "content": "Cats or dogs?",
+        },
+    ],
+)
+print(response["message"]["content"])
+```
+
+Now I see this when I run the code. But for some reason, Deepseek no longer "thinks."
+
+![](images/ollama/deepseek-cats-dogs-ollama.gif)
+
+The requests library can also be used.
+
+```python
+import requests
+
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+data = {
+    "model": "deepseek-r1:14b",
+    "prompt": "Cats or dogs?",
+    "stream": False,
+}
+response = requests.post(OLLAMA_API_URL, json=data)
+
+if response.status_code == 200:
+    result = response.json()
+    print(result["response"])
+else:
+    print(f"Failed to get a response: {response.status_code}")
+```
+
+This is the output I get from the code. And like before, Deepseek has stopped "thinking."
+
+![](images/ollama/deepseek-cats-dogs-requests.gif)
