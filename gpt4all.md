@@ -64,8 +64,14 @@ with model.chat_session():
 
 When you run it now, you may get something that sounds a lot more sensible:
 
-![](images/gpt4all/session-cats-or-dogs.gif)
+![](images/gpt4all/session-cats-dogs.gif)
 
-We can also use a **system prompt** to create a character for our conversation.
+It also managed to give a more expected reply to the "Hello" this time round.
+
+### System Prompts
+
+We can also use a **system prompt** to create a character or style for our conversation. These are the very first prompt that the model receives.
+
+
 
 ## Managing Hallucination
