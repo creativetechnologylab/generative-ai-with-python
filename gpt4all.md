@@ -182,5 +182,34 @@ AI: Astronauts are individuals who travel to space aboard spacecraft in order to
 
 The student's code asked a question like "What is the capital of France?" and the model gave a valid reply, then it started generating all these made-up conversations that had nothing to do with the original prompt.
 
-One solution here is to use something like the `streaming` argument to make the reponse stop as soon as we hit the term `User:`. We keep the good part of the response and get rid of what isn't needed.
+One solution here is to use the `streaming` argument. When we use the `streaming` argument for the `generate` function, we cause it to give the words one-by-one as the reply is being generated, rather than simply sending back the entire chunk of completed text.
 
+We can then use this to make the reponse stop as soon as we hit the term `User:`. That way we can keep the good part of the response and get rid of what isn't needed.
+
+Here is a made-up example that can do this. Let's say we're generating responses to do with Improv but for some reason we know things get derailed whenever the word "pirate" shows up. By using the `streaming` argument we can stop adding to the reply once we encouter the word "pirate."
+
+```python
+from gpt4all import GPT4All
+
+# choose a model to chat with - this will download it if it isn't already present on your machine
+model = GPT4All("orca-mini-3b-gguf2-q4_0.gguf")
+
+# create an empty  string for our reply
+response = ""
+
+# choose a word to catch
+word_to_catch = "pirate"
+
+for word in model.generate("What are some good improv exercises?", streaming=True):
+    # get out of the loop here if we've found the word we don't want
+    if word_to_catch in word:
+        break
+
+    # add the word to our response if it doesn't match the word to catch
+    response += word
+    print(word)
+
+print(response)
+```
+
+While this problem doesn't actually appear for me, you could extend this idea to manage more "predictable" hallucinations if you've found that they often follow a pattern.
