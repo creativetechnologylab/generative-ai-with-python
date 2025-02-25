@@ -165,6 +165,31 @@ Running this gives me the output below:
 
 By using a system prompt, it can be possible to give the language model a bit of a "personality."
 
+## Deepseek
+
+It is possible to use Deepseek with the `gp4all` library. To do this, download the Deepseek GGUF model file provided by GPT4All here: https://huggingface.co/GPT4All-Community/DeepSeek-R1-Distill-Llama-8B-GGUF/resolve/main/DeepSeek-R1-Distill-Llama-8B-Q4_0.gguf
+
+Be sure to save it to a path that is memorable. Now we can send the location of this file to the GPT4All library, and also use Python code to interact with this model.
+
+```python
+from gpt4all import GPT4All
+
+# change the path for where the deepseek gguf was downloaded
+DEEPSEEK_PATH = "/home/work/llm-models/DeepSeek-R1-Distill-Llama-8B-Q4_0.gguf"
+model = GPT4All(DEEPSEEK_PATH)
+
+# have a conversation using a session rather than a one-off prompt
+with model.chat_session():
+    print(model.generate("Hello!"))
+    print(model.generate("Pick one: cats or dogs?"))
+```
+
+This code may give you output like the following:
+```
+Hi there! How can I assist you today?
+Hmm, that's a tough question. I think both are great animals, but if I had to choose, maybe cats because they're more independent and can be left alone for longer periods.
+```
+
 ## Managing Hallucination
 
 Sometimes models repeat themselves over and over. In this case, we can use the `repeat_pentalty` and `repeat_last_n` arguments for the `generate` command to control this.
