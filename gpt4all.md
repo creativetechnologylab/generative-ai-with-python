@@ -169,7 +169,7 @@ By using a system prompt, it can be possible to give the language model a bit of
 
 It is possible to use Deepseek with the `gp4all` library. To do this, download the Deepseek GGUF model file provided by GPT4All here: https://huggingface.co/GPT4All-Community/DeepSeek-R1-Distill-Llama-8B-GGUF/resolve/main/DeepSeek-R1-Distill-Llama-8B-Q4_0.gguf
 
-Be sure to save it to a path that is memorable. Now we can send the location of this file to the GPT4All library, and also use Python code to interact with this model.
+Be sure to save it to a path that is memorable. Now, using the code below, change the`DEEPSEEK_PATH` to the location of your GGUF file.
 
 ```python
 from gpt4all import GPT4All
